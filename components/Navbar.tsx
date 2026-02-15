@@ -19,8 +19,8 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#f8f3e3]/80 backdrop-blur-md border-b border-[#d6d1c0]">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-1.5">
+      <div className="w-full px-4 md:px-8 h-16 flex items-center justify-between relative">
+        <div className="flex items-center gap-1.5 z-10">
           {socialLinks.map((link, i) => (
             <a
               key={i}
@@ -32,7 +32,21 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex gap-4 md:gap-6">
+        <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
+          <Link
+            href="/"
+            className="flex items-center group gap-0.5"
+          >
+            <div className="bg-retro-box text-white font-mono text-xl font-black px-2 py-0.5 rounded-sm group-hover:bg-retro-accent transition-colors">
+              A
+            </div>
+            <div className="text-retro-dark font-mono text-xl font-black tracking-tighter">
+              PJ
+            </div>
+          </Link>
+        </div>
+
+        <div className="flex gap-4 md:gap-8 z-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
