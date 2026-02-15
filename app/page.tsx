@@ -1,64 +1,77 @@
-import Image from "next/image";
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import { TechnicalLog, LogItem } from '@/components/TechnicalLog';
+
+const projects: LogItem[] = [
+  {
+    date: 'JAN 2024 - PRESENT',
+    title: 'AGENTIC AI ENGINE',
+    description: 'Developed a high-performance orchestration layer for autonomous AI agents, enabling complex multi-step task execution with real-time feedback loops and tool-calling capabilities.',
+    tags: ['NEXT.JS 15', 'TYPESCRIPT', 'OPENAI', 'REDIS'],
+  },
+  {
+    date: 'JUN 2023 - DEC 2023',
+    title: 'DISTRIBUTED ASSET LEDGER',
+    description: 'Architected a distributed ledger system for real estate tokenization, focusing on security, low-latency transactions, and immutable audit trails using Hyperledger Fabric.',
+    tags: ['GO', 'HYPERLEDGER', 'GRPC', 'POSTGRES'],
+  },
+  {
+    date: 'JAN 2023 - MAY 2023',
+    title: 'NEURAL VISUALIZER',
+    description: 'Built a 3D visualization platform for neural network weights and activations using WebGL and Three.js, helping researchers debug model behavior.',
+    tags: ['REACT', 'THREE.JS', 'WEBGL', 'GLSL'],
+  },
+];
+
+const work: LogItem[] = [
+  {
+    date: '2022 - PRESENT',
+    title: 'SENIOR FRONTEND ENGINEER @ TECHCORP',
+    description: 'Leading the design system team and spearheading the migration to micro-frontends architecture. Improved application load times by 40% through aggressive caching and code-splitting.',
+    tags: ['LEADERSHIP', 'ARCHITECT', 'PERFORMANCE'],
+  },
+  {
+    date: '2020 - 2022',
+    title: 'FRONTEND DEVELOPER @ STARTUPX',
+    description: 'Built the core user dashboard and real-time charting library. Scaled the platform to support 100k+ concurrent users.',
+    tags: ['REACT', 'D3.JS', 'WEBSOCKETS'],
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="min-h-screen bg-[#f8f3e3] selection:bg-retro-accent selection:text-white overflow-x-hidden">
+      <Navbar />
+      <main className="max-w-6xl mx-auto px-6 md:px-12 pb-24">
+        <Hero />
+
+        <TechnicalLog
+          items={projects.map(p => ({ ...p, type: 'project' } as LogItem))}
+          title="Projects"
+          description="A technical log of systems, tools, and experimental engines I've architected."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+
+        <div className="py-12">
+          <div className="border-t border-dashed border-[#d6d1c0] w-full" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+        <TechnicalLog
+          items={work.map(w => ({ ...w, type: 'work' } as LogItem))}
+          title="Experience"
+          description="Chronicles of professional engineering, scaling systems from zero to millions."
+        />
+
+        <footer className="mt-32 pt-12 border-t border-[#d6d1c0] flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] font-mono text-retro-muted uppercase tracking-[0.3em] font-bold">
+          <div className="flex items-center gap-4">
+            <span>© 2024 AYUSH PETWAL</span>
+            <span className="w-1 h-1 bg-retro-accent rounded-full" />
+            <span>OPEN TO OPPORTUNITIES</span>
+          </div>
+          <span className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-retro-accent rounded-full animate-pulse" />
+            BUILT WITH NEXT.JS 15 + TAILWIND 4
+          </span>
+        </footer>
       </main>
     </div>
   );

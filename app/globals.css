@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@theme {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-retro-cream: #f8f3e3;
+  --color-retro-dark: #2d2d2d;
+  --color-retro-muted: #706f6a;
+  --color-retro-accent: #e59e43;
+  --color-retro-box: #2d343e;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #f8f3e3;
+  --foreground: #2d2d2d;
+  --muted: #706f6a;
+  --border: #d6d1c0;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+}
+
+h1,
+h2,
+h3,
+h4,
+.mono {
+  font-family: var(--font-mono);
+}
+
+.retro-heading {
+  display: inline-block;
+  background-color: var(--color-retro-box);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  position: relative;
+  box-shadow: 4px 4px 0px var(--color-retro-accent);
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+::selection {
+  background-color: var(--color-retro-accent);
+  color: white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0ebdb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d6d1c0;
+  border: 4px solid #f0ebdb;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c0bba6;
 }
