@@ -18,7 +18,7 @@ const Hero = () => {
                 </div>
                 <div className="space-y-6 flex flex-col items-center">
                     <p className="font-sans text-base md:text-lg text-retro-dark max-w-2xl leading-relaxed font-medium mx-auto">
-                        I love building cool things and meeting other people who build things. I work across smart contracts, data pipelines, and frontends to ship crypto apps. Apart from over-engineering problems, I also dabble in research, design and other creative arts like music & drawing.
+                        I love building systems that do complicated stuffs and solve real world problems. I work across smart contracts, data pipelines, and frontends to ship apps. Apart from over-engineering problems, I also dabble in research and design stuff.
                     </p>
                     <div className="flex items-center justify-center gap-4 text-[10px] font-mono text-retro-muted uppercase tracking-widest font-bold">
                         <span>Based in India</span>

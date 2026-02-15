@@ -16,10 +16,10 @@ const Navbar = () => {
   ];
 
   const socialLinks = [
-    { icon: <Linkedin className="w-4 h-4" />, href: '#' },
-    { icon: <Github className="w-4 h-4" />, href: '#' },
-    { icon: <Twitter className="w-4 h-4" />, href: '#' },
-    { icon: <Terminal className="w-4 h-4" />, href: '#' },
+    { icon: <Linkedin className="w-4 h-4" />, href: 'https://www.linkedin.com/in/ayushpetwal/' },
+    { icon: <Github className="w-4 h-4" />, href: 'https://github.com/1Ayush-Petwal' },
+    { icon: <Twitter className="w-4 h-4" />, href: 'https://x.com/Ayush_P_145' },
+    { icon: <Terminal className="w-4 h-4" />, href: 'https://leetcode.com/u/ayush_petwal01/' },
   ];
 
   return (
@@ -84,7 +84,7 @@ const Navbar = () => {
           {/* Social icons on mobile (compact) */}
           <div className="flex md:hidden items-center gap-1">
             <a
-              href="#"
+              href="https://github.com/1Ayush-Petwal"
               className="w-7 h-7 flex items-center justify-center bg-retro-box text-white rounded-sm"
             >
               <Github className="w-3.5 h-3.5" />
