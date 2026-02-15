@@ -16,8 +16,8 @@ const TechnicalLogItem = ({ date, title, description, tags, type = 'project', li
     const Icon = type === 'work' ? Briefcase : type === 'article' ? Pencil : type === 'side-quest' ? Globe : Code;
 
     const content = (
-        <div className="bg-[#fcfaf2] border border-[#d6d1c0]/60 rounded-xl p-8 pt-10 shadow-sm group-hover:shadow-md transition-shadow duration-300">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+        <div className="bg-[#fcfaf2] border border-[#d6d1c0]/60 rounded-xl p-8 pt-12 shadow-sm group-hover:shadow-md transition-shadow duration-300 flex flex-col items-center text-center">
+            <div className="flex flex-col items-center justify-center gap-4 mb-6 w-full">
                 <h3 className="font-mono text-xl md:text-2xl font-black text-retro-dark tracking-tight uppercase">
                     {title}
                 </h3>
@@ -26,11 +26,11 @@ const TechnicalLogItem = ({ date, title, description, tags, type = 'project', li
                 </div>
             </div>
 
-            <p className="font-sans text-sm md:text-base text-retro-dark/80 leading-relaxed mb-6 font-medium">
+            <p className="font-sans text-sm md:text-base text-retro-dark/80 leading-relaxed mb-8 font-medium max-w-2xl">
                 {description}
             </p>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
                 {tags.map((tag) => (
                     <span
                         key={tag}

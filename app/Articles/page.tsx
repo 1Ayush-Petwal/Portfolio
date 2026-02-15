@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import { TechnicalLog, LogItem } from '@/components/TechnicalLog';
 import { fetchArticles } from '@/lib/medium';
+// import { Footer } from '@/components/Footer';
 
 export default async function ArticlesPage() {
     // Replace with your actual username or use env vars
@@ -30,14 +31,15 @@ export default async function ArticlesPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-[#f8f3e3]">
+        <div className="min-h-screen bg-[#f8f3e3] selection:bg-retro-accent selection:text-white">
             <Navbar />
-            <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24">
+            <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24 flex flex-col items-center">
                 <TechnicalLog
                     items={displayItems}
                     title="Articles"
                     description="Essays on engineering, systems design, and the intersection of AI and interfaces."
                 />
+                {/* <Footer /> */}
             </main>
         </div>
     );

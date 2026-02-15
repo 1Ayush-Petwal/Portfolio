@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f8f3e3] selection:bg-retro-accent selection:text-white overflow-x-hidden">
       <Navbar />
-      <main className="max-w-6xl mx-auto px-6 md:px-12 pb-24">
+      <main className="max-w-6xl mx-auto px-6 md:px-12 pb-24 flex flex-col items-center">
         <Hero />
 
         <TechnicalLog
@@ -61,10 +61,10 @@ export default function Home() {
           description="Chronicles of professional engineering, scaling systems from zero to millions."
         />
 
-        <footer className="mt-32 pt-12 border-t border-[#d6d1c0] flex flex-col md:flex-row justify-between items-center gap-6 text-[9px] font-mono text-retro-muted uppercase tracking-[0.3em] font-bold">
-          <div className="flex items-center gap-4">
+        <footer className="mt-32 pt-12 border-t border-[#d6d1c0] flex flex-col items-center gap-6 text-[9px] font-mono text-retro-muted uppercase tracking-[0.3em] font-bold text-center">
+          <div className="flex flex-col md:flex-row items-center gap-4">
             <span>© 2024 AYUSH PETWAL</span>
-            <span className="w-1 h-1 bg-retro-accent rounded-full" />
+            <span className="hidden md:block w-1 h-1 bg-retro-accent rounded-full" />
             <span>OPEN TO OPPORTUNITIES</span>
           </div>
           <span className="flex items-center gap-2">

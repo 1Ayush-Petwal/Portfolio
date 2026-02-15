@@ -28,7 +28,7 @@ export default async function ProjectsPage() {
     return (
         <div className="min-h-screen bg-[#f8f3e3]">
             <Navbar />
-            <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24">
+            <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24 flex flex-col items-center">
                 <TechnicalLog
                     items={displayItems}
                     title="Projects"
