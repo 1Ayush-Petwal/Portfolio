@@ -1,38 +1,46 @@
 import Navbar from '@/components/Navbar';
 import { TechnicalLog, LogItem } from '@/components/TechnicalLog';
-import { fetchPinnedRepos } from '@/lib/github';
 
-export default async function ProjectsPage() {
-    const githubUsername = process.env.GITHUB_USERNAME || 'ayushpetwal';
-    const repos = await fetchPinnedRepos(githubUsername);
-
-    const projectItems: LogItem[] = repos.map(repo => ({
-        date: new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }).toUpperCase(),
-        title: repo.name.replace(/-/g, ' '),
-        description: repo.description || 'No description provided.',
-        tags: [repo.language || 'Code', ...(repo.topics || []).slice(0, 2)].filter(Boolean),
-        link: repo.html_url,
+const projects: LogItem[] = [
+    {
+        date: 'JAN 2025 - PRESENT',
+        title: 'DARK POOL HOOK',
+        description: 'A Uniswap v4 hook implementing a Dark Pool with end-to-end privacy using Zero-Knowledge Proofs (ZKP). Leverages EigenLayer AVS for decentralized order matching and execution of dark orders.',
+        tags: ['SOLIDITY', 'ZKP', 'EIGENLAYER', 'UNISWAP V4'],
         type: 'project'
-    }));
+    },
+    {
+        date: 'DEC 2024',
+        title: 'FABEL',
+        description: 'A conversational AI-powered image generation platform integrated with the Farcaster protocol. Allows creators to generate on-chain images by simply tagging a bot, bridging social and creative tools.',
+        tags: ['AI', 'FARCASTER', 'STABLE DIFFUSION', 'WEB3'],
+        type: 'project'
+    },
+    {
+        date: 'NOV 2024',
+        title: 'CITREAMESH',
+        description: 'A Model Context Protocol (MCP) server bridging LLMs with the Citrea blockchain ecosystem. Provides AI-accessible tools for wallet management, token utilities, and testnet interactions.',
+        tags: ['TYPESCRIPT', 'MCP', 'CITREA', 'BLOCKCHAIN'],
+        type: 'project'
+    },
+    {
+        date: 'OCT 2024',
+        title: 'RPG VERSE AGENTIC',
+        description: 'ETH Global winner. AI-powered MMORPG multiverse built with RPG JS and Coinbase AgentKit. Features specialized AI agents capable of managing wallets and interacting with DeFi protocols like Aave.',
+        tags: ['COINBASE AGENTKIT', 'MMORPG', 'EIGENDA', 'WEB3'],
+        type: 'project'
+    },
+];
 
-    const displayItems = projectItems.length > 0 ? projectItems : [
-        {
-            date: 'JAN 2024 - PRESENT',
-            title: 'AGENTIC AI ENGINE',
-            description: 'Developed a high-performance orchestration layer for autonomous AI agents, enabling complex multi-step task execution.',
-            tags: ['NEXT.JS 15', 'TYPESCRIPT', 'OPENAI'],
-            type: 'project' as const
-        }
-    ];
-
+export default function ProjectsPage() {
     return (
         <div className="min-h-screen bg-[#f8f3e3]">
             <Navbar />
             <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24 flex flex-col items-center">
                 <TechnicalLog
-                    items={displayItems}
+                    items={projects}
                     title="Projects"
-                    description="A chronological log of open-source contributions, experimental systems, and technical architectures."
+                    description="A technical log of systems, tools, and experimental engines I've architected."
                 />
             </main>
         </div>
