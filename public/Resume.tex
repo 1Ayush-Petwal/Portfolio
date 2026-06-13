@@ -1,0 +1,215 @@
+%-------------------------
+% Resume in LaTeX
+% Author: Ayush Petwal
+% Based on the Jake Gutierrez resume template
+% License: MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{verbatim}
+\usepackage{enumitem}
+
+
+% --- Link colour (slight, professional blue) ---
+\definecolor{linkcolor}{HTML}{0563C1}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    urlcolor=linkcolor,
+    linkcolor=linkcolor,
+    citecolor=linkcolor
+}
+
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+%----------- PAGE SETUP -----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%----------- SECTION FORMATTING -----------
+\titleformat{\section}{
+  \vspace{-8pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+% Ensure that generated pdf is machine readable / ATS parsable
+\pdfgentounicode=1
+
+%----------- CUSTOM COMMANDS -----------
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-4pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%======================================================
+\begin{document}
+
+%----------- HEADER -----------
+\begin{center}
+    {\Huge \scshape Ayush Petwal} \\ \vspace{2pt}
+    \small
+    \faIcon{globe}\ \href{https://ayushpetwal.vercel.app/}{Ayush Petwal} \quad
+    \faIcon{linkedin}\ \href{https://linkedin.com/in/ayushpetwal}{Ayush Petwal} \quad
+    \faIcon{github}\ \href{https://github.com/1Ayush-Petwal}{1Ayush-Petwal} \quad
+    \faIcon{twitter}\ \href{https://twitter.com/Ayush_P_145}{Ayush\_P\_145}
+    \vspace{-8pt}
+\end{center}
+
+%----------- SKILLS -----------
+\section{Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+        \textbf{Languages}{: C/C++, Java, JavaScript, Go, Python, Shell Scripting (Bash), Rust, Solidity} \\
+        \textbf{Frameworks}{: SpringBoot, React JS, Next.js, FastAPI} \\
+        \textbf{Development Environment}{: Linux command line, Git, Docker, Kubernetes} \\
+        \textbf{Tools \& Technologies}{: Spring, MongoDB, MySQL, Express, Node JS, Redis, OpenTelemetry, Apache Spark, Hyperledger Fabric, Hedera, IPFS, libp2p, Distributed Systems (BlockChain), Excalidraw} \\
+        \textbf{Problem-solving \& Logical Reasoning}{: Over 300+ DSA Problems on \href{https://codeforces.com/profile/ayush.petwal145}{CodeForces} \& \href{https://leetcode.com/u/ayush_petwal01/}{LeetCode} (1523)}
+    }}
+\end{itemize}
+
+%----------- WORK EXPERIENCE -----------
+\section{Work Experience}
+\resumeSubHeadingListStart
+
+    %------ Kubeflow OSS ------
+    \resumeSubheading
+  {Kubeflow \textnormal{\small(Kubernetes-native ML toolkit )} \hfill \href{https://github.com/kubeflow}{(Kubeflow GitHub)} \hfill \textnormal{\small(Keys: Python \textbar\ Go \textbar\ Kubernetes \textbar\ OpenTelemetry \textbar\ Spark)}}{Remote}
+  {Open Source Contributor --- SDK \& Spark Operator}{Feb 2026 -- Present}
+  \resumeItemListStart
+    \resumeItem{Designed and prototyped \textbf{OpenTelemetry distributed tracing} for the Kubeflow SDK --- closing a long-standing observability gap by surfacing end-to-end traces, metrics, and logs across Python SDK calls and Kubernetes worker pods, making failure modes visible to ML platform teams that were previously invisible.}
+    \resumeItem{Shipped \textbf{5 PRs} across Kubeflow SDK \& Spark Operator --- SparkCluster CRD for Spark Standalone on K8s, MultiKueue integration, ModelRegistry extensions, Trainer documentation, and a stability fix. \href{https://gist.github.com/1Ayush-Petwal/625bb3564b32d228d3d0a801fa6642bf}{Full PR list (gist)}.}
+  \resumeItemListEnd
+
+    %------ UpValue current role ------
+    \resumeSubheading
+      {UpValue Tech Pvt Ltd. \hfill \textnormal{\small(Keys: ML Infra \textbar\ MLOps \textbar\ Python \textbar\ Docker)}}{Jaipur, IN}
+      {AI Infrastructure Engineer}{Feb 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Building a \textbf{recommerce system} specifically for \textbf{ML Hardware}, mapping out the old hardware for specific ML Workflows with there resell value calculation}
+        \resumeItem{Targeting Big data centers with huge fleets of GPUs, aiming to improve the efficiency of ML Workflows by \textbf{50\%}}
+      \resumeItemListEnd
+
+    %------ Kritu Capital ------
+    \resumeSubheading
+      {Kritu Capital LLC \hfill \textnormal{\small(Private Company Code, Keys: MERN \textbar\ Hyperledger Fabric \textbar\ FastAPI )}}{Remote, Virginia, US}
+      {AI \& Blockchain Intern}{Jan 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Building a \textbf{Real Estate Tokenisation \& Mortgage Solution} for client deployment.}
+        \resumeItem{Targeting the US blockchain-based fractional real-estate ownership market, valued at $\sim$\textbf{\$4.6B} and emerging as a major investment driver; product spans tokenisation, mortgage origination, and AI-driven valuation across \textbf{MERN}, \textbf{Hyperledger Fabric}, \textbf{FastAPI}, and Python.}
+      \resumeItemListEnd
+
+    %------ UpValue past role ------
+    \resumeSubheading
+      {UpValue Tech Pvt Ltd. \hfill \href{https://github.com/1Ayush-Petwal/UpValue_Future_Price_Pred}{(GitHub Link)} \hfill \textnormal{\small(Keys: ML \textbar\ Redis \textbar\ FastAPI \textbar\ Server)}}{Jaipur, IN}
+      {Backend Intern}{May 2025 -- Aug 2025}
+      \resumeItemListStart
+        \resumeItem{Built a \textbf{Stock Prediction System} using algorithmic trading, optimising risk management and portfolio allocation.}
+        \resumeItem{Implemented \textbf{Redis caching} solutions in a Unix environment, optimising API response times by \textbf{60\%} through efficient memory management.}
+      \resumeItemListEnd
+
+    %------ Hackathons ------
+    \resumeSubheading
+      {13+ Hackathons, 3 Wins}{}
+      {\href{https://ethglobal.com/showcase/suriverse-nj5ru}{Agentic Ethereum} \quad \textbar \quad \href{https://dorahacks.io/buidl/22125/team}{LNM Hacks 7}}{}
+
+\resumeSubHeadingListEnd
+
+%----------- PROJECTS -----------
+\section{Projects}
+\vspace{-4pt}
+\resumeSubHeadingListStart
+
+    %------ Distro-Train ------
+    \resumeProjectHeading
+      {\textbf{Distro-Train: Decentralized Federated Learning Platform} $\vert$ \href{https://github.com/1Ayush-Petwal/Distro_Train_M}{GitHub Link} $\vert$ \\
+      \emph{Python, TypeScript, Solidity, Next.js, py-libp2p}}{Sept 2025}
+      \resumeItemListStart
+        \resumeItem{Designed and built a \textbf{P2P marketplace} connecting ML users (with data and models but no compute) to trainers (with idle GPUs/CPUs); ML users pay in \textbf{HBAR} (Testnet faucet) and receive trained weights, trainers earn HBAR on assigned training chunks via market-based fair pricing.}
+        \resumeItem{Targeting a \textbf{40\%} reduction in end-to-end switching overhead for ML users versus stitched-together compute + payment flows.}
+        \resumeItem{Outcome: ML engineers train without bearing full cloud compute costs; trainers monetize idle hardware through verifiable distributed training cycles.}
+      \resumeItemListEnd
+
+    %------ InferGate ------
+    \resumeProjectHeading
+      {\textbf{InferGate} $\vert$ \href{https://github.com/1Ayush-Petwal/llm-serve-k8s/}{GitHub Link} $\vert$ \emph{Kubernetes, Istio, vLLM/SGLang, Helm, Prometheus}}{Jun 2026}
+      \resumeItemListStart
+        \resumeItem{Engineered an \textbf{OpenAI-compatible LLM serving path on Kubernetes} behind the \textbf{Gateway API Inference Extension} (llm-d), with \textbf{model-aware routing} via \texttt{InferencePool}/\texttt{InferenceObjective} and an Endpoint-Picker.}
+        \resumeItem{Demonstrated \textbf{backend portability across vLLM and SGLang} --- swapping the inference engine is a pure server-side Deployment change with an \textbf{identical client}, since the gateway, route, and pool wiring stay unchanged.}
+        \resumeItem{Fully scripted cluster bring-up (\texttt{make up}) on a local \texttt{kind} cluster running \textbf{GPU-free at \$0} via the llm-d inference simulator, with Prometheus \texttt{/metrics} scraping for observability.}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+%----------- EDUCATION -----------
+\section{Education}
+\resumeSubHeadingListStart
+
+    \resumeSubheading
+      {The LNM Institute of Information Technology}{Jaipur, IN}
+      {Bachelor of Engineering, Major in Computer \& Communication}{Expected May 2027}
+      \resumeItemListStart
+        \resumeItem{Cumulative GPA: \textbf{8.13 / 10.0}}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+\end{document}

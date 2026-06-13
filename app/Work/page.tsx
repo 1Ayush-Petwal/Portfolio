@@ -1,46 +1,75 @@
+import type { Metadata } from 'next';
+import { ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import { TechnicalLog, LogItem } from '@/components/TechnicalLog';
-// import { Footer } from '@/components/Footer';
+import Footer from '@/components/Footer';
+import Section from '@/components/Section';
+import PageHeader from '@/components/PageHeader';
+import Experience from '@/components/Experience';
+import { experience, education, hackathons } from '@/lib/data';
 
-const work: LogItem[] = [
-    {
-        date: 'MAY 2025 - PRESENT',
-        title: 'BACKEND INTERN @ UPVALUE TECH PVT LTD',
-        description: 'Building a Stock Prediction System using ML algorithms for trading. Implemented Redis caching in Unix environments, optimizing API response times by 60% through efficient memory management.',
-        tags: ['ML', 'REDIS', 'FASTAPI', 'SERVER'],
-        type: 'work'
-    },
-    {
-        date: 'MAY 2024 - PRESENT',
-        title: 'BLOCKCHAIN & AI INTERN @ US STARTUP',
-        description: 'Working on Real World Assets (RWA) tokenization and integration of AI with blockchain infrastructure.',
-        tags: ['BLOCKCHAIN', 'AI', 'RWA'],
-        type: 'work'
-    },
-    {
-        date: '2023 - PRESENT',
-        title: 'HACKATHONS & COMPETITIONS',
-        description: 'Participated in 15+ hackathons with 2 wins: ETH Global and LNM Hacks 7. Focus on Agentic AI and Blockchain systems.',
-        tags: ['HACKATHONS', 'ETH GLOBAL', 'LNM HACKS'],
-        type: 'work'
-    },
-];
+export const metadata: Metadata = {
+    title: 'Work',
+    description: 'Professional experience, hackathons, and education — Ayush Petwal.',
+};
 
 export default function WorkPage() {
     return (
-        <div className="min-h-screen bg-[#f8f3e3] selection:bg-retro-accent selection:text-white">
+        <div className="min-h-screen bg-retro-cream selection:bg-retro-accent selection:text-white overflow-x-hidden">
             <Navbar />
-            <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24 flex flex-col items-center">
-                <div className="mb-12 flex flex-col items-center text-center">
-                    <h1 className="retro-heading text-2xl md:text-3xl mb-6">
-                        Experience
-                    </h1>
-                    <p className="font-sans text-base text-retro-dark/80 font-medium">
-                        Professional trajectory and key contributions.
-                    </p>
-                </div>
-                <TechnicalLog items={work} title="Professional History" />
-                {/* <Footer /> */}
+            <main className="max-w-5xl mx-auto px-5 md:px-8">
+                <PageHeader
+                    kicker="// Experience"
+                    title="Work"
+                    subtitle="Chapters of hands-on building — from open-source contributions to ML infrastructure and onchain systems."
+                />
+
+                <Section label="Roles" index="01" total="03">
+                    <Experience jobs={experience} />
+                </Section>
+
+                <Section label="Hackathons" index="02" total="03">
+                    <div className="max-w-2xl">
+                        <h3 className="font-mono text-base md:text-lg font-black text-retro-dark tracking-tight">
+                            {hackathons.headline}
+                        </h3>
+                        <p className="mt-2 font-sans text-sm md:text-[15px] text-retro-dark/85 leading-relaxed">
+                            {hackathons.blurb}
+                        </p>
+                        <div className="mt-4 flex flex-wrap gap-2">
+                            {hackathons.links.map((l) => (
+                                <a
+                                    key={l.href}
+                                    href={l.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 font-mono text-[11px] px-3 py-1 border border-retro-border rounded-full text-retro-muted hover:text-retro-accent hover:border-retro-box transition-colors uppercase tracking-wide"
+                                >
+                                    {l.label}
+                                    <ArrowUpRight className="w-3 h-3" />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </Section>
+
+                <Section label="Education" index="03" total="03">
+                    <div className="max-w-2xl">
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                            <h3 className="font-mono text-base md:text-lg font-black text-retro-dark tracking-tight">
+                                {education.degree}
+                            </h3>
+                            <span className="font-mono text-[11px] text-retro-muted uppercase tracking-widest whitespace-nowrap">
+                                {education.period}
+                            </span>
+                        </div>
+                        <div className="mt-1.5 font-mono text-sm text-retro-muted">
+                            {education.school} · {education.location}
+                        </div>
+                        <p className="mt-3 font-sans text-sm text-retro-dark/80">{education.detail}</p>
+                    </div>
+                </Section>
+
+                <Footer />
             </main>
         </div>
     );

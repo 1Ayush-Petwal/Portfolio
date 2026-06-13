@@ -1,47 +1,32 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
-import { TechnicalLog, LogItem } from '@/components/TechnicalLog';
+import Footer from '@/components/Footer';
+import Section from '@/components/Section';
+import PageHeader from '@/components/PageHeader';
+import ProjectGrid from '@/components/ProjectGrid';
+import { projects } from '@/lib/data';
 
-const projects: LogItem[] = [
-    {
-        date: 'JAN 2025 - PRESENT',
-        title: 'DARK POOL HOOK',
-        description: 'A Uniswap v4 hook implementing a Dark Pool with end-to-end privacy using Zero-Knowledge Proofs (ZKP). Leverages EigenLayer AVS for decentralized order matching and execution of dark orders.',
-        tags: ['SOLIDITY', 'ZKP', 'EIGENLAYER', 'UNISWAP V4'],
-        type: 'project'
-    },
-    {
-        date: 'DEC 2024',
-        title: 'FABEL',
-        description: 'A conversational AI-powered image generation platform integrated with the Farcaster protocol. Allows creators to generate on-chain images by simply tagging a bot, bridging social and creative tools.',
-        tags: ['AI', 'FARCASTER', 'STABLE DIFFUSION', 'WEB3'],
-        type: 'project'
-    },
-    {
-        date: 'NOV 2024',
-        title: 'CITREAMESH',
-        description: 'A Model Context Protocol (MCP) server bridging LLMs with the Citrea blockchain ecosystem. Provides AI-accessible tools for wallet management, token utilities, and testnet interactions.',
-        tags: ['TYPESCRIPT', 'MCP', 'CITREA', 'BLOCKCHAIN'],
-        type: 'project'
-    },
-    {
-        date: 'OCT 2024',
-        title: 'RPG VERSE AGENTIC',
-        description: 'ETH Global winner. AI-powered MMORPG multiverse built with RPG JS and Coinbase AgentKit. Features specialized AI agents capable of managing wallets and interacting with DeFi protocols like Aave.',
-        tags: ['COINBASE AGENTKIT', 'MMORPG', 'EIGENDA', 'WEB3'],
-        type: 'project'
-    },
-];
+export const metadata: Metadata = {
+    title: 'Projects',
+    description: 'Systems, tools, and experimental engines built by Ayush Petwal.',
+};
 
 export default function ProjectsPage() {
     return (
-        <div className="min-h-screen bg-[#f8f3e3]">
+        <div className="min-h-screen bg-retro-cream selection:bg-retro-accent selection:text-white overflow-x-hidden">
             <Navbar />
-            <main className="max-w-6xl mx-auto px-6 md:px-12 pt-32 pb-24 flex flex-col items-center">
-                <TechnicalLog
-                    items={projects}
+            <main className="max-w-5xl mx-auto px-5 md:px-8">
+                <PageHeader
+                    kicker="// Selected work"
                     title="Projects"
-                    description="A technical log of systems, tools, and experimental engines I've architected."
+                    subtitle="A technical log of systems, tools, and experimental engines I've architected — spanning ML infrastructure, distributed systems, and onchain protocols."
                 />
+
+                <Section label="Builds" divider>
+                    <ProjectGrid projects={projects} detailed />
+                </Section>
+
+                <Footer />
             </main>
         </div>
     );

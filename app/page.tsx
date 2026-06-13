@@ -1,90 +1,61 @@
+import { ArrowUpRight } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import { TechnicalLog, LogItem } from '@/components/TechnicalLog';
+import About from '@/components/About';
+import Section from '@/components/Section';
+import Experience from '@/components/Experience';
+import ProjectGrid from '@/components/ProjectGrid';
+import Writing from '@/components/Writing';
+import Footer from '@/components/Footer';
+import { projects, experience, articlesToPosts } from '@/lib/data';
+import { fetchArticles } from '@/lib/medium';
 
-const projects: LogItem[] = [
-  {
-    date: 'JAN 2025 - PRESENT',
-    title: 'DARK POOL HOOK',
-    description: 'A Uniswap v4 hook implementing a Dark Pool with end-to-end privacy using Zero-Knowledge Proofs (ZKP). Leverages EigenLayer AVS for decentralized order matching and execution of dark orders.',
-    tags: ['SOLIDITY', 'ZKP', 'EIGENLAYER', 'UNISWAP V4'],
-  },
-  {
-    date: 'DEC 2024',
-    title: 'FABEL',
-    description: 'A conversational AI-powered image generation platform integrated with the Farcaster protocol. Allows creators to generate on-chain images by simply tagging a bot, bridging social and creative tools.',
-    tags: ['AI', 'FARCASTER', 'STABLE DIFFUSION', 'WEB3'],
-  },
-  {
-    date: 'NOV 2024',
-    title: 'CITREAMESH',
-    description: 'A Model Context Protocol (MCP) server bridging LLMs with the Citrea blockchain ecosystem. Provides AI-accessible tools for wallet management, token utilities, and testnet interactions.',
-    tags: ['TYPESCRIPT', 'MCP', 'CITREA', 'BLOCKCHAIN'],
-  },
-  {
-    date: 'OCT 2024',
-    title: 'RPG VERSE AGENTIC',
-    description: 'ETH Global winner. AI-powered MMORPG multiverse built with RPG JS and Coinbase AgentKit. Features specialized AI agents capable of managing wallets and interacting with DeFi protocols like Aave.',
-    tags: ['COINBASE AGENTKIT', 'MMORPG', 'EIGENDA', 'WEB3'],
-  },
-];
+export const revalidate = 3600;
 
-const work: LogItem[] = [
-  {
-    date: 'MAY 2025 - PRESENT',
-    title: 'BACKEND INTERN @ UPVALUE TECH PVT LTD',
-    description: 'Building a Stock Prediction System using ML algorithms for trading. Implemented Redis caching in Unix environments, optimizing API response times by 60% through efficient memory management.',
-    tags: ['ML', 'REDIS', 'FASTAPI', 'SERVER'],
-  },
-  {
-    date: 'MAY 2024 - PRESENT',
-    title: 'BLOCKCHAIN & AI INTERN @ US STARTUP',
-    description: 'Working on Real World Assets (RWA) tokenization and integration of AI with blockchain infrastructure.',
-    tags: ['BLOCKCHAIN', 'AI', 'RWA'],
-  },
-  {
-    date: '2023 - PRESENT',
-    title: 'HACKATHONS & COMPETITIONS',
-    description: 'Participated in 15+ hackathons with 2 wins: ETH Global and LNM Hacks 7. Focus on Agentic AI and Blockchain systems.',
-    tags: ['HACKATHONS', 'ETH GLOBAL', 'LNM HACKS'],
-  },
-];
+const ViewAllLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
+    <a
+        href={href}
+        className="inline-flex items-center gap-1 mt-7 font-mono text-[11px] text-retro-muted hover:text-retro-accent uppercase tracking-widest font-bold transition-colors group"
+    >
+        {children}
+        <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+    </a>
+);
 
-export default function Home() {
-  return (
-    <div className="min-h-screen bg-[#f8f3e3] selection:bg-retro-accent selection:text-white overflow-x-hidden">
-      <Navbar />
-      <main className="max-w-6xl mx-auto px-6 md:px-12 pb-24 flex flex-col items-center">
-        <Hero />
+export default async function Home() {
+    const mediumUsername = process.env.MEDIUM_USERNAME || 'ayushpetwal';
+    const substackUrl = process.env.SUBSTACK_URL;
+    const articles = await fetchArticles(mediumUsername, substackUrl);
+    const posts = articlesToPosts(articles).slice(0, 3);
 
-        <TechnicalLog
-          items={projects.map(p => ({ ...p, type: 'project' } as LogItem))}
-          title="Projects"
-          description="A technical log of systems, tools, and experimental engines I've architected."
-        />
+    const featured = projects.filter((p) => p.featured);
 
-        <div className="py-12">
-          <div className="border-t border-dashed border-[#d6d1c0] w-full" />
+    return (
+        <div className="min-h-screen bg-retro-cream selection:bg-retro-accent selection:text-white overflow-x-hidden">
+            <Navbar />
+            <main className="max-w-5xl mx-auto px-5 md:px-8">
+                <Hero />
+
+                <Section label="About" index="01" total="04" id="about">
+                    <About />
+                </Section>
+
+                <Section label="Work" index="02" total="04" id="work">
+                    <Experience jobs={experience} />
+                    <ViewAllLink href="/Work">Full experience</ViewAllLink>
+                </Section>
+
+                <Section label="Projects" index="03" total="04" id="projects">
+                    <ProjectGrid projects={featured} />
+                    <ViewAllLink href="/projects">All projects</ViewAllLink>
+                </Section>
+
+                <Section label="Writing" index="04" total="04" id="writing">
+                    <Writing posts={posts} viewAllHref="/Articles" />
+                </Section>
+
+                <Footer />
+            </main>
         </div>
-
-        <TechnicalLog
-          items={work.map(w => ({ ...w, type: 'work' } as LogItem))}
-          title="Experience"
-          description="Chronicles of professional engineering, scaling systems from zero to millions."
-        />
-
-        <footer className="mt-32 pt-12 border-t border-[#d6d1c0] flex flex-col items-center gap-6 text-[9px] font-mono text-retro-muted uppercase tracking-[0.3em] font-bold text-center">
-          <div className="flex flex-col md:flex-row items-center gap-4">
-            <span>© 2026 AYUSH PETWAL</span>
-            <span className="hidden md:block w-1 h-1 bg-retro-accent rounded-full" />
-            <span>OPEN TO OPPORTUNITIES</span>
-          </div>
-          <span className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-retro-accent rounded-full animate-pulse" />
-            BUILT WITH NEXT.JS 15 + TAILWIND 4
-          </span>
-        </footer>
-      </main>
-    </div>
-  );
+    );
 }
